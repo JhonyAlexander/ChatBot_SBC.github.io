@@ -1,0 +1,265 @@
+/* Importa la fuente Roboto desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Variables CSS para definir colores globales */
+:root {
+    --primary-color: #255000; /* Color primario de la aplicación */
+    --secondary-color: #5a8405; /* Color secundario, usado en botones y tabs */
+    --accent-color: #fec329; /* Color de acento, usado para resaltar elementos */
+    --text-color: #052036; /* Color del texto principal */
+    --bg-color: #f0f0f0; /* Color de fondo */
+    --chat-bg: #ffffff; /* Color de fondo del contenedor de chat */
+    --input-bg: #ffffff; /* Color de fondo del input de usuario */
+    --message-user-bg: #5a8405; /* Color del fondo de los mensajes del usuario */
+    --message-bot-bg: #e0e0e0; /* Color del fondo de los mensajes del bot */
+}
+
+/* Estilos globales del body */
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Fuente principal del sitio */
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/upc1.jpg'); /* Ruta de la imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen al fondo */
+    color: var(--text-color); /* Color del texto */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave al cambiar tema */
+}
+
+/* Modo oscuro: redefine las variables para el tema oscuro */
+body.dark-mode {
+    --primary-color: #3a5a05;
+    --secondary-color: #3a5a05;
+    --accent-color: #ffd700;
+    --text-color: #e0e0e0;
+    --bg-color: #121212;
+    --chat-bg: #5c5b5b;
+    --input-bg: #2c2c2c;
+    --message-user-bg: #3a5a05;
+    --message-bot-bg: #2c2c2c;
+}
+
+/* Estilos del header */
+header {
+    background-color: var(--primary-color); /* Fondo según el color primario */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave para el header */
+}
+
+/* Estilos del logo */
+.logo {
+    width: 80px;
+    height: 80px;
+    background-color: white; /* Fondo blanco para el logo */
+    border-radius: 50%; /* Bordes redondeados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(110, 70, 70, 0.1); /* Sombra del logo */
+    transition: transform 0.3s ease; /* Transición suave en hover */
+}
+
+/* Efecto de hover sobre el logo */
+.logo:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Estilos de la imagen dentro del logo */
+.logo img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin deformarse */
+}
+
+/* Contenedor de tabs de navegación */
+.tabs {
+    display: flex;
+    gap: 20px; /* Espacio entre cada tab */
+}
+
+/* Estilos de los tabs */
+.tab {
+    color: #ffffff; /* Color del texto del tab */
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: var(--secondary-color); /* Color de fondo del tab */
+    border-radius: 20px;
+    transition: all 0.3s ease; /* Transición suave en hover */
+}
+
+/* Efectos en hover y cuando el tab está activo */
+.tab:hover, .tab.active {
+    background-color: var(--accent-color); /* Cambia el fondo al color de acento */
+    color: var(--primary-color); /* Cambia el color del texto */
+    transform: translateY(-2px); /* Levanta el tab ligeramente */
+}
+
+/* Botón para cambiar el tema (modo oscuro o claro) */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--accent-color); /* Color del botón de tema */
+    font-size: 1.5rem; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor a pointer en hover */
+    transition: transform 0.3s ease; /* Transición suave al rotar */
+}
+
+/* Rotación del botón en hover */
+#theme-toggle:hover {
+    transform: rotate(15deg); /* Gira ligeramente el botón */
+}
+
+/* Estilo de los títulos h2 */
+h2 {
+    color: var(--primary-color); /* Color del título */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+/* Contenedor principal del chat */
+#chat-container {
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: var(--chat-bg); /* Fondo del chat */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra del contenedor */
+}
+
+/* Estilo del área del chat */
+#chat {
+    background-color: var(--chat-bg); /* Fondo del chat */
+    border-radius: 8px;
+    padding: 15px;
+}
+
+/* Área de mensajes */
+#messages {
+    height: 200px; /* Altura del contenedor de mensajes */
+    overflow-y: auto; /* Barra de desplazamiento en Y */
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: var(--chat-bg);
+    border-radius: 8px;
+    border: 1px solid var(--message-bot-bg); /* Borde de los mensajes del bot */
+}
+
+/* Estilos generales de los mensajes */
+.message {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    word-wrap: break-word; /* Ajuste de palabras largas */
+    animation: fadeIn 0.5s ease; /* Animación de entrada */
+}
+
+/* Animación de entrada suave de los mensajes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos de los mensajes del usuario */
+.user-message {
+    background-color: var(--message-user-bg); /* Fondo del mensaje del usuario */
+    color: #ffffff; /* Texto blanco */
+    align-self: flex-end; /* Alinea el mensaje a la derecha */
+    margin-left: auto;
+}
+
+/* Estilos de los mensajes del bot */
+.bot-message {
+    background-color: var(--message-bot-bg); /* Fondo del mensaje del bot */
+    color: var(--text-color); /* Texto del bot */
+    align-self: flex-start; /* Alinea el mensaje a la izquierda */
+}
+
+/* Contenedor de entrada de texto */
+.input-container {
+    display: flex;
+    gap: 10px; /* Espacio entre el input y el botón */
+}
+
+/* Estilo del input de texto del usuario */
+#user-input {
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    padding: 12px;
+    border: 1px solid var(--secondary-color); /* Borde del input */
+    border-radius: 20px;
+    outline: none;
+    transition: box-shadow 0.3s ease; /* Transición al enfocar */
+    background-color: var(--input-bg); /* Fondo del input */
+    color: var(--text-color); /* Color del texto */
+}
+
+/* Efecto al enfocar el input */
+#user-input:focus {
+    box-shadow: 0 0 5px rgba(90, 132, 5, 0.5); /* Sombra al enfocar */
+}
+
+/* Estilo del botón de enviar */
+#send-button {
+    padding: 12px 20px;
+    border: none;
+    background-color: var(--accent-color); /* Fondo del botón */
+    color: var(--primary-color); /* Texto del botón */
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición en hover */
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+#send-button:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff; /* Cambia el color del texto al blanco */
+    transform: translateY(-2px); /* Levanta el botón ligeramente */
+}
+
+/* Efecto al hacer clic en el botón */
+#send-button:active {
+    transform: translateY(0); /* Restaura la posición del botón */
+}
+
+/* Indicador de que el bot está escribiendo */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Estilos de los puntos que indican que el bot está escribiendo */
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--message-bot-bg); /* Color de los puntos */
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: bounce 1.2s infinite ease-in-out; /* Animación de rebote */
+}
+
+/* Animación de los puntos */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .tabs {
+        gap: 10px;
+    }
+    #chat-container {
+        padding: 10px;
+    }
+}
